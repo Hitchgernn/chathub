@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+httpx
+httpx
+python-dotenv
+typer
+rich
