@@ -1,0 +1,13 @@
+cat > .gitignore << 'EOF'
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+# OS
+.DS_Store
+Thumbs.db
+# IDE
+.vscode/
+.idea/
+EOF
