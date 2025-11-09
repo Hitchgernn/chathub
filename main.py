@@ -3,13 +3,11 @@ from utils.logger import log
 from router import ask_ai
 from utils.config import MODEL_FALLBACK
 
-app = typer.Typer(add_completion=False)
-
-@app.command()
-def chat(prompt: str, model: str = typer.Option(MODEL_FALLBACK, "--model", "-m")):
+def main(model: str = typer.Option(MODEL_FALLBACK, "--model", "-m"),
+         prompt: str = typer.Argument(...)):
     """
     Example:
-      python main.py chat "hello" -m gemini
+      python main.py -m gemini "Explain AI in one sentence"
     """
     try:
         resp = ask_ai(model, prompt)
@@ -19,4 +17,4 @@ def chat(prompt: str, model: str = typer.Option(MODEL_FALLBACK, "--model", "-m")
         raise typer.Exit(code=1)
 
 if __name__ == "__main__":
-    app()
+    typer.run(main)
