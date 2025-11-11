@@ -1,4 +1,4 @@
-from services import gemini_service, openai_service, deepseek_service
+from services import gemini_service, openai_service, deepseek_service, huggingface_service
 
 def ask_ai(model: str, prompt: str) -> str:
     model = (model or "").lower()
@@ -8,4 +8,6 @@ def ask_ai(model: str, prompt: str) -> str:
         return gemini_service.query(prompt)
     if model in ("deepseek",):
         return deepseek_service.query(prompt)
+    if model in ("huggingface", "hf"):
+        return huggingface_service.query(prompt)
     raise ValueError(f"Unsupported model: {model}")
